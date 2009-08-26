@@ -427,6 +427,13 @@ config MACH_USB_A9G20
 	  Select this if you are using a Calao Systems USB-A9G20.
 	  <http://www.calao-systems.com>
 
+config MACH_MRFSA
+	bool "Embedtronics MRFSA Evaluation Kit"
+	select HAVE_AT91_DATAFLASH_CARD
+	help
+	  Select this if you are using Embedtronics's MRFSA Evaluation Kit
+	  <http://www.embedtronics.fi/products/mrfsa/>
+
 config MACH_QIL_A9G20
 	bool "CALAO QIL-A9G20"
 	help
