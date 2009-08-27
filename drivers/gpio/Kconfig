@@ -381,6 +381,13 @@ config GPIO_MC33880
 	  SPI driver for Freescale MC33880 high-side/low-side switch.
 	  This provides GPIO interface supporting inputs and outputs.
 
+config GPIO_MC74X595
+	tristate "MC74x595 compatible shift register"
+	depends on SPI_MASTER
+	help
+	  SPI driver for MC74x595 compatible shift register.  This provides
+	  a GPIO interface supporting outputs.
+
 config GPIO_74X164
 	tristate "74x164 serial-in/parallel-out 8-bits shift register"
 	depends on SPI_MASTER
