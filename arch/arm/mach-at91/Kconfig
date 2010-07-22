@@ -430,6 +430,8 @@ config MACH_USB_A9G20
 config MACH_MRFSA
 	bool "Embedtronics MRFSA Evaluation Kit"
 	select HAVE_AT91_DATAFLASH_CARD
+	select GENERIC_GPIO
+	select ARCH_REQUIRE_GPIOLIB
 	help
 	  Select this if you are using Embedtronics's MRFSA Evaluation Kit
 	  <http://www.embedtronics.fi/products/mrfsa/>
