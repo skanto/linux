@@ -50,6 +50,7 @@ obj-$(CONFIG_ADX_WATCHDOG) += adx_wdt.o
 obj-$(CONFIG_TS72XX_WATCHDOG) += ts72xx_wdt.o
 obj-$(CONFIG_IMX2_WDT) += imx2_wdt.o
 obj-$(CONFIG_MRFSA_WATCHDOG) += mrfsa_wdt.o
+obj-$(CONFIG_AT91SAM9X_GPIO_WATCHDOG) += at91sam9_gpio_wdt.o
 
 # AVR32 Architecture
 obj-$(CONFIG_AT32AP700X_WDT) += at32ap700x_wdt.o
