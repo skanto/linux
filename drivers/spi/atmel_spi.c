@@ -785,7 +785,7 @@ static int __init atmel_spi_probe(struct platform_device *pdev)
 	master->mode_bits = SPI_CPOL | SPI_CPHA | SPI_CS_HIGH;
 
 	master->bus_num = pdev->id;
-#ifdef	CONFIG_MACH_MRFSA
+#if	defined(CONFIG_MACH_MRFSA) || defined(CONFIG_MACH_TM_EFDC)
 	/* we need some virtual chip selects */
 	master->num_chipselect = 8;
 #else
