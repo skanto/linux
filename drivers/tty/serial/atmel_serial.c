@@ -146,6 +146,8 @@ struct atmel_uart_port {
 	struct atmel_dma_buffer	pdc_rx[2];	/* PDC receier */
 
 	short			use_dma_tx;	/* enable PDC transmitter */
+	short			txe_pin;	/* TX-enable pin */
+	short			txe_active_low;	/* TX-enable is active low */
 	struct atmel_dma_buffer	pdc_tx;		/* PDC transmitter */
 
 	struct tasklet_struct	tasklet;
@@ -524,12 +526,17 @@ static void atmel_tx_chars(struct uart_port *port)
 	struct atmel_uart_port *atmel_port = to_atmel_uart_port(port);
 
 	if (port->x_char && UART_GET_CSR(port) & atmel_port->tx_done_mask) {
+		if (atmel_port->txe_pin)
+			at91_set_gpio_value(atmel_port->txe_pin, atmel_port->txe_active_low ? 0 : 1);
 		UART_PUT_CHAR(port, port->x_char);
 		port->icount.tx++;
 		port->x_char = 0;
 	}
 	if (uart_circ_empty(xmit) || uart_tx_stopped(port))
 		return;
+
+	if (atmel_port->txe_pin)
+		at91_set_gpio_value(atmel_port->txe_pin, atmel_port->txe_active_low ? 0 : 1);
 
 	while (UART_GET_CSR(port) & atmel_port->tx_done_mask) {
 		UART_PUT_CHAR(port, xmit->buf[xmit->tail]);
@@ -595,6 +602,9 @@ static void
 atmel_handle_transmit(struct uart_port *port, unsigned int pending)
 {
 	struct atmel_uart_port *atmel_port = to_atmel_uart_port(port);
+
+	if (pending & ATMEL_US_TXEMPTY && atmel_port->txe_pin)
+		at91_set_gpio_value(atmel_port->txe_pin, atmel_port->txe_active_low ? 1 : 0);
 
 	if (pending & atmel_port->tx_done_mask) {
 		/* Either PDC or interrupt transmission */
@@ -677,6 +687,8 @@ static void atmel_tx_dma(struct uart_port *port)
 
 		UART_PUT_TPR(port, pdc->dma_addr + xmit->tail);
 		UART_PUT_TCR(port, count);
+		if (atmel_port->txe_pin)
+			at91_set_gpio_value(atmel_port->txe_pin, atmel_port->txe_active_low ? 0 : 1);
 		/* re-enable PDC transmit */
 		UART_PUT_PTCR(port, ATMEL_PDC_TXTEN);
 		/* Enable interrupts */
@@ -1433,6 +1445,8 @@ static void __devinit atmel_init_port(struct atmel_uart_port *atmel_port,
 		/* only enable clock when USART is in use */
 	}
 
+	atmel_port->txe_pin = data->txe_pin;
+	atmel_port->txe_active_low = data->txe_active_low;
 	atmel_port->use_dma_rx = data->use_dma_rx;
 	atmel_port->use_dma_tx = data->use_dma_tx;
 	atmel_port->rs485	= data->rs485;
