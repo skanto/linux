@@ -360,6 +360,12 @@ config GPIO_RDC321X
 
 comment "SPI GPIO expanders:"
 
+config GPIO_TM_EFDC
+	tristate "TM-EFDC I/O driver"
+	depends on SPI_MASTER && MACH_TM_EFDC
+	help
+	  I/O driver for Telemerkki TM-EFDC.
+
 config GPIO_MAX4896
 	tristate "Maxim MAX4896 GPIO expander"
 	depends on SPI_MASTER
