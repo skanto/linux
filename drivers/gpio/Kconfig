@@ -372,6 +372,13 @@ config GPIO_MAX4896
 	help
 	  gpio driver for Maxim MAX4896 SPI GPIO expander.
 
+config GPIO_AD5666
+	tristate "AD5666 D/A driver"
+	depends on SPI_MASTER
+	help
+	  SPI driver for AD5666 compatible D/A converters. This provides
+	  a GPIO interface supporting outputs.
+
 config GPIO_MAX7301
 	tristate "Maxim MAX7301 GPIO expander"
 	depends on SPI_MASTER
