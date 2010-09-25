@@ -1567,6 +1567,14 @@ int gpio_get_values(unsigned gpio, unsigned count, int *values)
 
 	while (count > 0) {
 		struct gpio_chip *chip = gpio_to_chip(gpio);
+
+		if (!chip) {
+			gpio++;
+			values++;
+			count--;
+			continue;
+		}
+
 		unsigned offs = gpio - chip->base;
 		unsigned num = chip->ngpio - offs;
 
