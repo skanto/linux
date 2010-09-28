@@ -366,6 +366,12 @@ config GPIO_TM_EFDC
 	help
 	  I/O driver for Telemerkki TM-EFDC.
 
+config GPIO_TM_EFDC_DIO
+	tristate "TM-EFDC Digital I/O driver"
+	depends on SPI_MASTER && MACH_TM_EFDC
+	help
+	  Digital I/O driver for Telemerkki TM-EFDC.
+
 config GPIO_MAX4896
 	tristate "Maxim MAX4896 GPIO expander"
 	depends on SPI_MASTER
