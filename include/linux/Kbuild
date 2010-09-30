@@ -357,6 +357,7 @@ header-y += timex.h
 header-y += tiocl.h
 header-y += tipc.h
 header-y += tipc_config.h
+header-y += tm_efdc-gpio.h
 header-y += toshiba.h
 header-y += tty.h
 header-y += types.h
