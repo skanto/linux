@@ -503,6 +503,8 @@ endif
 
 # ----------------------------------------------------------
 
+=======
+>>>>>>> mach-at91 - fixed Kconfig (duplicate entries)
 if ARCH_AT91CAP9
 
 comment "AT91CAP9 Board Type"
