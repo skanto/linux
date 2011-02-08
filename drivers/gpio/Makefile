@@ -5,6 +5,7 @@
 # code, IRQ controllers, board init, etc.
 
 ccflags-$(CONFIG_DEBUG_GPIO)	+= -DDEBUG
+EXTRA_CFLAGS += -D__IN_XENOMAI__ -Iinclude/xenomai
 
 obj-$(CONFIG_GPIOLIB)		+= gpiolib.o
 
