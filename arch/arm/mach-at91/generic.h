@@ -45,6 +45,7 @@ extern void __init at91_clock_associate(const char *id, struct device *dev, cons
  /* Power Management */
 extern void at91_irq_suspend(void);
 extern void at91_irq_resume(void);
+extern int at91_suspend_entering_slow_clock(void);
 
 /* reset */
 extern void at91sam9_alt_reset(void);

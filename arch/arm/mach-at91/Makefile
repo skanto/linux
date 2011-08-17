@@ -19,7 +19,7 @@ obj-$(CONFIG_ARCH_AT91SAM9RL)	+= at91sam9rl.o at91sam926x_time.o at91sam9rl_devi
 obj-$(CONFIG_ARCH_AT91SAM9G20)	+= at91sam9260.o at91sam926x_time.o at91sam9260_devices.o sam9_smc.o at91sam9_alt_reset.o
 obj-$(CONFIG_ARCH_AT91SAM9G45)	+= at91sam9g45.o at91sam926x_time.o at91sam9g45_devices.o sam9_smc.o
 obj-$(CONFIG_ARCH_AT91CAP9)	+= at91cap9.o at91sam926x_time.o at91cap9_devices.o sam9_smc.o
-obj-$(CONFIG_ARCH_AT572D940HF)  += at572d940hf.o at91sam926x_time.o at572d940hf_devices.o sam9_smc.o
+obj-$(CONFIG_ARCH_AT572D940HF)	+= at572d940hf.o at91sam926x_time.o at572d940hf_devices.o sam9_smc.o
 obj-$(CONFIG_ARCH_AT91X40)	+= at91x40.o at91x40_time.o
 
 # AT91RM9200 board-specific support
@@ -34,9 +34,14 @@ obj-$(CONFIG_MACH_ATEB9200)	+= board-eb9200.o
 obj-$(CONFIG_MACH_KAFA)		+= board-kafa.o
 obj-$(CONFIG_MACH_PICOTUX2XX)	+= board-picotux200.o
 obj-$(CONFIG_MACH_ECBAT91)	+= board-ecbat91.o
+obj-$(CONFIG_MACH_CHUB)		+= board-chub.o
+obj-$(CONFIG_MACH_HOMEMATIC)	+= board-homematic.o
+obj-$(CONFIG_MACH_SWEDATMS)	+= board-tms.o
+obj-$(CONFIG_MACH_TT9200)	+= board-tt9200.o
 obj-$(CONFIG_MACH_YL9200)	+= board-yl-9200.o
 obj-$(CONFIG_MACH_CPUAT91)	+= board-cpuat91.o
 obj-$(CONFIG_MACH_ECO920)	+= board-eco920.o
+obj-$(CONFIG_MACH_AT91BOFF)	+= board-boff.o
 
 # AT91SAM9260 board-specific support
 obj-$(CONFIG_MACH_AT91SAM9260EK) += board-sam9260ek.o
@@ -44,6 +49,7 @@ obj-$(CONFIG_MACH_CAM60)	+= board-cam60.o
 obj-$(CONFIG_MACH_SAM9_L9260)	+= board-sam9-l9260.o
 obj-$(CONFIG_MACH_USB_A9260)	+= board-usb-a9260.o
 obj-$(CONFIG_MACH_QIL_A9260)	+= board-qil-a9260.o
+obj-$(CONFIG_MACH_SBC35_A9260)	+= board-sbc35-a9260.o
 obj-$(CONFIG_MACH_AFEB9260)	+= board-afeb-9260v1.o
 obj-$(CONFIG_MACH_CPU9260)	+= board-cpu9krea.o
 obj-$(CONFIG_MACH_FLEXIBITY)	+= board-flexibity.o
@@ -55,6 +61,8 @@ obj-$(CONFIG_MACH_AT91SAM9G10EK) += board-sam9261ek.o
 # AT91SAM9263 board-specific support
 obj-$(CONFIG_MACH_AT91SAM9263EK) += board-sam9263ek.o
 obj-$(CONFIG_MACH_USB_A9263)	+= board-usb-a9263.o
+obj-$(CONFIG_MACH_CSB737)	+= board-csb737.o
+obj-$(CONFIG_MACH_TOTEMNOVA)	+= board-totemnova.o
 obj-$(CONFIG_MACH_NEOCORE926)	+= board-neocore926.o
 
 # AT91SAM9RL board-specific support
@@ -66,6 +74,9 @@ obj-$(CONFIG_MACH_CPU9G20)	+= board-cpu9krea.o
 obj-$(CONFIG_MACH_ACMENETUSFOXG20) += board-foxg20.o
 obj-$(CONFIG_MACH_STAMP9G20)	+= board-stamp9g20.o
 obj-$(CONFIG_MACH_PORTUXG20)	+= board-stamp9g20.o
+obj-$(CONFIG_MACH_USB_A9G20)	+= board-usb-a9g20.o
+obj-$(CONFIG_MACH_QIL_A9G20)	+= board-qil-a9g20.o
+obj-$(CONFIG_MACH_SBC35_A9G20)	+= board-sbc35-a9g20.o
 obj-$(CONFIG_MACH_PCONTROL_G20)	+= board-pcontrol-g20.o board-stamp9g20.o
 obj-$(CONFIG_MACH_GSIA18S)	+= board-gsia18s.o board-stamp9g20.o
 
@@ -86,6 +97,7 @@ obj-$(CONFIG_MACH_AT91EB01)	+= board-eb01.o
 
 # Drivers
 obj-y				+= leds.o
+obj-$(CONFIG_FB_S1D13XXX)	+= ics1523.o
 
 # Power Management
 obj-$(CONFIG_PM)		+= pm.o

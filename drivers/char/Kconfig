@@ -1136,6 +1136,22 @@ config DEVPORT
 
 source "drivers/s390/char/Kconfig"
 
+config AT91_SPI
+	bool "SPI driver (legacy) for AT91RM9200 processors"
+	depends on ARCH_AT91RM9200
+	default y
+	help
+	  The SPI driver gives access to this serial bus on the AT91RM9200
+	  processor.
+
+config AT91_SPIDEV
+	bool "SPI device interface (legacy) for AT91RM9200 processors"
+	depends on ARCH_AT91RM9200 && AT91_SPI
+	default n
+	help
+	  The SPI driver gives user mode access to this serial
+	  bus on the AT91RM9200 processor.
+
 config RAMOOPS
 	tristate "Log panic/oops to a RAM buffer"
 	depends on HAS_IOMEM

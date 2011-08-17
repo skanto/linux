@@ -125,6 +125,12 @@ config MACH_AT91RM9200EK
 	  Select this if you are using Atmel's AT91RM9200-EK Evaluation Kit.
 	  <http://www.atmel.com/dyn/products/tools_card.asp?tool_id=3507>
 
+config MACH_AT91BOFF
+	bool "Boff Armputera BF-210"
+	help
+	  Select this if you are using Boff Armputera BF-210 board.
+	  <http://bryndza.ep.com.pl>
+
 config MACH_CSB337
 	bool "Cogent CSB337"
 	help
@@ -166,12 +172,33 @@ config MACH_KAFA
 	help
 	  Select this if you are using Sperry-Sun's KAFA board.
 
+config MACH_CHUB
+	bool "Promwad Chub board"
+	help
+	  Select this if you are using Promwad's Chub board.
+
+config MACH_HOMEMATIC
+	bool "eQ-3 HomeMatic"
+	help
+	  Select this if you are using eQ-3's HomeMatic device.
+	  <http://www.eq-3.com>
+
 config MACH_ECBAT91
 	bool "emQbit ECB_AT91 SBC"
 	select HAVE_AT91_DATAFLASH_CARD
 	help
 	  Select this if you are using emQbit's ECB_AT91 board.
 	  <http://wiki.emqbit.com/free-ecb-at91>
+
+config MACH_SWEDATMS
+	bool "Sweda TMS Board"
+	help
+	  Select this if you are using Sweda TMS-100 board.
+
+config MACH_TT9200
+	bool "Toptech TT9200"
+	help
+	  Select this if you are using Toptech's TT9200 board.
 
 config MACH_YL9200
 	bool "ucDragon YL-9200"
@@ -246,11 +273,11 @@ config MACH_QIL_A9260
 	  Select this if you are using a Calao Systems QIL-A9260 Board.
 	  <http://www.calao-systems.com>
 
-config MACH_CPU9260
-	bool "Eukrea CPU9260 board"
+config MACH_SBC35_A9260
+	bool "CALAO SBC35-A9260"
 	help
-	  Select this if you are using a Eukrea Electromatique's
-	  CPU9260 Board <http://www.eukrea.com/>
+	  Select this if you are using a Calao Systems SBC35-A9260.
+	  <http://www.calao-systems.com>
 
 config MACH_FLEXIBITY
 	bool "Flexibity Connect board"
@@ -312,6 +339,19 @@ config MACH_USB_A9263
 	  Select this if you are using a Calao Systems USB-A9263.
 	  <http://www.calao-systems.com>
 
+config MACH_CSB737
+	bool "Cogent CSB737 System-on-Module"
+	help
+	  Select this if you are using Cogent's CSB737 System-on-module.
+	  <http://www.cogcomp.com/csb_csb737.htm>
+
+config MACH_TOTEMNOVA
+	bool "TotemNova Micronova industrial supervisor"
+	select HAVE_AT91_DATAFLASH_CARD
+	help
+	  Select this if you are using Micronova's TotemNova industrial supervisor
+	  <http://www.micronovasrl.com>
+
 config MACH_NEOCORE926
 	bool "Adeneo NEOCORE926"
 	select HAVE_AT91_DATAFLASH_CARD
@@ -330,6 +370,25 @@ config MACH_AT91SAM9RLEK
 	bool "Atmel AT91SAM9RL-EK Evaluation Kit"
 	help
 	  Select this if you are using Atmel's AT91SAM9RL-EK Evaluation Kit.
+
+config MACH_ACMENETUSFOXG20
+	bool "Acme Systems srl FOX Board G20"
+	help
+	  Select this if you are using Acme Systems
+	  FOX Board G20 <http://www.acmesystems.it>
+
+config MACH_PORTUXG20
+	bool "taskit PortuxG20"
+	help
+	  Select this if you are using taskit's PortuxG20.
+	  <http://www.taskit.de/en/>
+
+config MACH_STAMP9G20
+	bool "taskit Stamp9G20 CPU module"
+	help
+	  Select this if you are using taskit's Stamp9G20 CPU module on its
+	  evaluation board.
+	  <http://www.taskit.de/en/>
 
 endif
 
@@ -362,24 +421,23 @@ config MACH_CPU9G20
 	  Select this if you are using a Eukrea Electromatique's
 	  CPU9G20 Board <http://www.eukrea.com/>
 
-config MACH_ACMENETUSFOXG20
-	bool "Acme Systems srl FOX Board G20"
+config MACH_USB_A9G20
+	bool "CALAO USB-A9G20"
 	help
-	  Select this if you are using Acme Systems
-	  FOX Board G20 <http://www.acmesystems.it>
+	  Select this if you are using a Calao Systems USB-A9G20.
+	  <http://www.calao-systems.com>
 
-config MACH_PORTUXG20
-	bool "taskit PortuxG20"
+config MACH_QIL_A9G20
+	bool "CALAO QIL-A9G20"
 	help
-	  Select this if you are using taskit's PortuxG20.
-	  <http://www.taskit.de/en/>
+	  Select this if you are using a Calao Systems QIL-A9G20.
+	  <http://www.calao-systems.com>
 
-config MACH_STAMP9G20
-	bool "taskit Stamp9G20 CPU module"
+config MACH_SBC35_A9G20
+	bool "CALAO SBC35-A9G20"
 	help
-	  Select this if you are using taskit's Stamp9G20 CPU module on its
-	  evaluation board.
-	  <http://www.taskit.de/en/>
+	  Select this if you are using a Calao Systems SBC35-A9G20.
+	  <http://www.calao-systems.com>
 
 config MACH_PCONTROL_G20
 	bool "PControl G20 CPU module"
@@ -394,6 +452,7 @@ config MACH_GSIA18S
 	  This enables support for the GS_IA18_S board
 	  produced by GeoSIG Ltd company. This is an internet accelerograph.
 	  <http://www.geosig.com>
+
 endif
 
 if (ARCH_AT91SAM9260 || ARCH_AT91SAM9G20)
@@ -447,7 +506,6 @@ comment "AT572D940HF Board Type"
 
 config MACH_AT572D940HFEB
 	bool "AT572D940HF-EK"
-	depends on ARCH_AT572D940HF
 	select HAVE_AT91_DATAFLASH_CARD
 	select HAVE_NAND_ATMEL_BUSWIDTH_16
 	help
@@ -471,6 +529,7 @@ config MACH_AT91EB01
 	  Skyeye simulator.
 
 endif
+
 
 # ----------------------------------------------------------
 
@@ -513,12 +572,11 @@ config AT91_SLOW_CLOCK
 	  need to be completely re-initialized.
 
 config AT91_TIMER_HZ
-       int "Kernel HZ (jiffies per second)"
-       range 32 1024
-       depends on ARCH_AT91
-       default "128" if ARCH_AT91RM9200
-       default "100"
-       help
+	int "Kernel HZ (jiffies per second)"
+	range 32 1024
+	default "128" if ARCH_AT91RM9200
+	default "100"
+	help
 	  On AT91rm9200 chips where you're using a system clock derived
 	  from the 32768 Hz hardware clock, this tick rate should divide
 	  it exactly: use a power-of-two value, such as 128 or 256, to

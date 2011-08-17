@@ -369,6 +369,17 @@ static const char *part_probes[] = { "cmdlinepart", NULL };
 #endif
 
 /*
+ * Mode strings for various ECC types
+ * (This should correspond to nand_ecc_modes_t enum in include/linux/mtd/nand.h)
+ */
+static const char *ecc_modes[] __initdata = {
+	"No",
+	"Software",
+	"Hardware",
+	"Hardware with Syndrome"
+};
+
+/*
  * Probe for the NAND device.
  */
 static int __init atmel_nand_probe(struct platform_device *pdev)
@@ -438,6 +449,7 @@ static int __init atmel_nand_probe(struct platform_device *pdev)
 			res = -EIO;
 			goto err_ecc_ioremap;
 		}
+
 		nand_chip->ecc.mode = NAND_ECC_HW;
 		nand_chip->ecc.calculate = atmel_nand_calculate;
 		nand_chip->ecc.correct = atmel_nand_correct;
@@ -515,6 +527,11 @@ static int __init atmel_nand_probe(struct platform_device *pdev)
 			break;
 		}
 	}
+
+	printk(KERN_INFO "AT91 NAND: %i-bit, %s ECC\n",
+		(nand_chip->options & NAND_BUSWIDTH_16) ? 16 : 8,
+		ecc_modes[nand_chip->ecc.mode]
+	);
 
 	/* second phase scan */
 	if (nand_scan_tail(mtd)) {
