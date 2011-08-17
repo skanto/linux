@@ -29,6 +29,7 @@
 #include <linux/freezer.h>
 #include <linux/poll.h>
 #include <linux/mutex.h>
+#include <linux/slab.h>
 
 #include <asm/io.h>
 #include <mach/hardware.h>
