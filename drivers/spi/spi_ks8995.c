@@ -249,7 +249,7 @@ static int ks8995_reset(struct ks8995_switch *ks)
 
 /*-------------------------------------------------------------------------*/
 
-static int ks8995_registers_read(struct kobject *kobj,
+static int ks8995_registers_read(struct file *file, struct kobject *kobj,
 	struct bin_attribute *bin_attr, char *buf, loff_t off, size_t count)
 {
 	struct device *dev;
@@ -271,7 +271,7 @@ static int ks8995_registers_read(struct kobject *kobj,
 }
 
 
-static int ks8995_registers_write(struct kobject *kobj,
+static int ks8995_registers_write(struct file *file, struct kobject *kobj,
 	struct bin_attribute *bin_attr, char *buf, loff_t off, size_t count)
 {
 	struct device *dev;
